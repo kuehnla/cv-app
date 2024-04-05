@@ -9,9 +9,39 @@ body {
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: grey;
+  background-color: #e4e4e4;
 }
-
+/*
+ * Preview
+ */
 .displayContainer {
   background-color: rgb(250, 250, 250);
+  padding: 24px;
+}
+
+.cv-personal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cv-personal h3 {
+  font-size: 24px;
+}
+
+.cv-contact {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.phone,
+.email,
+.linkedIn {
+  display: flex;
+  gap: 4px;
+}
+
+.cv-contact img {
+  width: 20px;
 }

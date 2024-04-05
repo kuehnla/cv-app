@@ -13,8 +13,7 @@ export default function App() {
   const [fullName, setFullName] = useState("Kimberly Wexler");
   const [email, setEmail] = useState("kwexler@hhm.com");
   const [phone, setPhone] = useState("555-555-5555");
-  const [linkedIn, setLinkedIn] = useState("kwexler");
-  const [website, setWebsite] = useState("kwexler");
+  const [linkedIn, setLinkedIn] = useState("/in/kwexler");
 
   const [company, setCompany] = useState("Midsize Company");
   const [position, setPosition] = useState("Personality Hire");
@@ -35,7 +34,6 @@ export default function App() {
       case "email" : setEmail(value); break;
       case "phone" : setPhone(value); break;
       case "linkedIn" : setLinkedIn(value); break;
-      case "website" : setWebsite(value); break;
       // experience
       case "company" : setCompany(value); break;
       case "position" : setPosition(value); break;
@@ -61,7 +59,7 @@ export default function App() {
         <Education updateValue={updateValue} />
       </div>
       <div className="displayContainer">
-        <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} website={website} />
+        <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
         <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} />
         <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} />
       </div>
