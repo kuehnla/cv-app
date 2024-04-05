@@ -11,11 +11,16 @@ export default function Education(props) {
   */
 
   const fields = [
-    { label:"School", placeholder:"Enter university, college, or high school", key:uuid() },
-    { label:"Degree", placeholder:"Enter degree / diploma", key:uuid() },
-    { label:"Start Date", placeholder:"Enter start date", key:uuid() },
-    { label:"End Date", placeholder:"Enter end or expected date", key:uuid() }
+    { label:"School", placeholder:"Enter university, college, or high school", key:uuid(), state:"school" },
+    { label:"Degree", placeholder:"Enter degree / diploma", key:uuid(), state:"degree" },
+    { label:"Start Date", placeholder:"Enter start date", key:uuid(), state:"eduStartDate" },
+    { label:"End Date", placeholder:"Enter end or expected date", key:uuid(), state:"eduEndDate" }
   ];
+
+  function handleChange(e) {
+    e.preventDefault();
+    props.updateValue(e.target.value, e.target.id);
+  }
 
   return (
     <div className="education">
@@ -23,9 +28,9 @@ export default function Education(props) {
       <div>
           {fields.map((field) => {
             return (
-              <div key={field.id}>
-                <label htmlFor={field.id} key={field.id} > {field.label} </label>
-                <input type="text" name={field.id} className="educationInput" placeholder={field.placeholder} key={field.id} />
+              <div key={field.state}>
+                <label htmlFor={field.state}> {field.label} </label>
+                <input type="text" name={field.state} className="educationInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>
           )})}
       </div>
