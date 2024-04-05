@@ -3,12 +3,12 @@ import '../styles/App.css'
 
 export default function Display (props) {
   return (
-    <div className="cv-name">
-      <p>{props.fullName}</p>
-      <p>{props.email}</p>
-      <p>{props.phone}</p>
-      <p>{props.linkedIn}</p>
-      <p>{props.website}</p>
+    <div className="cv-contact">
+      <h3 id="fullName">{props.fullName}</h3>
+      <p id="email">{props.email}</p>
+      <p id="phone">{props.phone}</p>
+      <p id="linkedIn">{props.linkedIn}</p>
+      <p id="website">{props.website}</p>
     </div>
   )
 }
