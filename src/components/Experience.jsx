@@ -1,7 +1,6 @@
 import { v4 as uuid } from 'uuid';
-import Field from './Field';
 
-export default function Experience () {
+export default function Experience(props) {
   // [isOpen, setIsOpen] = useState(false);
   
   /*
@@ -26,11 +25,13 @@ export default function Experience () {
     <div>
       <h2>Experience</h2>
       <div>
-        <form action="" method="post" className="experience">
           {fields.map((field) => {
-            return <Field label={field.label} placeholder={field.placeholder} key={field.id} className="experience" />
-          })}
-        </form>
+            return (
+              <div key={field.id}>
+                <label htmlFor={field.id}> {field.label} </label>
+                <input type="text" name={field.id} className="personalInput" placeholder={field.placeholder} />
+              </div>
+          )})}
       </div>
     </div>
   )

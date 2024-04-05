@@ -1,3 +1,3 @@
-export default function Display(props) {
-
+export default function Display (props) {
+  <p></p>
 }

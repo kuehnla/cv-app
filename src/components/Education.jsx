@@ -1,7 +1,6 @@
-import Field from './Field'
 import { v4 as uuid } from 'uuid';
 
-export default function Education () {
+export default function Education(props) {
   // [isOpen, setIsOpen] = useState(false);
   
   /*
@@ -22,11 +21,13 @@ export default function Education () {
     <div>
       <h2>Education</h2>
       <div>
-        <form action="" method="post" className="education">
           {fields.map((field) => {
-            return <Field label={field.label} placeholder={field.placeholder} key={field.id} className="education" />
-          })}
-        </form>
+            return (
+              <div key={field.id}>
+                <label htmlFor={field.id}> {field.label} </label>
+                <input type="text" name={field.id} className="educationInput" placeholder={field.placeholder} />
+              </div>
+          )})}
       </div>
     </div>
   )

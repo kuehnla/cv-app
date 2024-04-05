@@ -1,8 +1,8 @@
-import Field from './Field'
+// import Field from './Field'
 import { v4 as uuid } from 'uuid';
 
 
-export default function Personal () {
+export default function Personal(props) {
 
   const fields = [
     { label: "Full Name", placeholder: "First and last name", id: uuid() },
@@ -15,13 +15,15 @@ export default function Personal () {
   return (
     <div>
       <h2>Personal Information</h2>
-      <form action="" method="post" className="personal">
         <div>
           {fields.map((field) => {
-            return <Field label={field.label} placeholder={field.placeholder} key={field.id} className="personal" />
-          })}
+            return (
+              <div key={field.id}>
+                <label htmlFor={field.id}> {field.label} </label>
+                <input type="text" name={field.id} className="personalInput" placeholder={field.placeholder} />
+             </div>
+          )})}
         </div>
-      </form>
     </div>
   )
   
