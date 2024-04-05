@@ -13,8 +13,8 @@ export default function Personal () {
   ];
 
   return (
-    <>
-      <h1>Personal Information</h1>
+    <div>
+      <h2>Personal Information</h2>
       <form action="" method="post" className="personal">
         <div>
           {fields.map((field) => {
@@ -22,7 +22,7 @@ export default function Personal () {
           })}
         </div>
       </form>
-    </>
+    </div>
   )
   
   /*
