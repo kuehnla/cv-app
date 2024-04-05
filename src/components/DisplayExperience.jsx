@@ -4,6 +4,7 @@ import '../styles/App.css'
 export default function DisplayExperience(props) {
   return (
     <div className="cv-experience">
+      <h2 id="expHeader">Experience</h2>
       <p>{props.company}</p>
       <p>{props.position}</p>
       <p>{props.expStartDate}</p>
@@ -12,4 +13,8 @@ export default function DisplayExperience(props) {
       <p>{props.expDesc}</p>
     </div>
   )
+}
+
+function Company({company}) {
+  
 }
