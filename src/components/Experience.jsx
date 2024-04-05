@@ -13,13 +13,20 @@ export default function Experience(props) {
   // FORM
 
   const fields = [
-    { label: "Company", placeholder: "Enter company name", key: uuid() },
-    { label: "Position", placeholder: "Enter position title", key: uuid() },
-    { label: "Start Date", placeholder: "Enter start date", key: uuid() },
-    { label: "End Date", placeholder: "Enter end date", key: uuid() },
-    { label: "Location", placeholder: "Enter location", key: uuid() },
-    { label: "Description", placeholder: "Enter role description", key: uuid() }
+    { label: "Company", placeholder: "Enter company name", key: uuid(), state: "company" },
+    { label: "Position", placeholder: "Enter position title", key: uuid(), state: "position" },
+    { label: "Start Date", placeholder: "Enter start date", key: uuid(), state:"expStartDate" },
+    { label: "End Date", placeholder: "Enter end date", key: uuid(), state:"expEndDate" },
+    { label: "Location", placeholder: "Enter location", key: uuid(), state:"expLocation" },
+    { label: "Description", placeholder: "Enter role description", key: uuid(), state:"expDesc" }
   ];
+
+
+
+  function handleChange(e) {
+    e.preventDefault();
+    props.updateValue(e.target.value, e.target.id);
+  }
 
   return (
     <div className="experience">
@@ -27,9 +34,9 @@ export default function Experience(props) {
       <div>
           {fields.map((field) => {
             return (
-              <div key={field.id}>
-                <label htmlFor={field.id} key={field.id} > {field.label} </label>
-                <input type="text" name={field.id} className="experienceInput" placeholder={field.placeholder} key={field.id} />
+              <div key={field.state}>
+                <label htmlFor={field.id} > {field.label} </label>
+                <input type="text" name={field.id} className="experienceInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>
           )})}
       </div>
