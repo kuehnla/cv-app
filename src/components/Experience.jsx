@@ -13,23 +13,23 @@ export default function Experience(props) {
   // FORM
 
   const fields = [
-    { label: "Company", placeholder: "Enter company name", id: uuid() },
-    { label: "Position", placeholder: "Enter position title", id: uuid() },
-    { label: "Start Date", placeholder: "Enter start date", id: uuid() },
-    { label: "End Date", placeholder: "Enter end date", id: uuid() },
-    { label: "Location", placeholder: "Enter location", id: uuid() },
-    { label: "Description", placeholder: "Enter role description", id: uuid() }
+    { label: "Company", placeholder: "Enter company name", key: uuid() },
+    { label: "Position", placeholder: "Enter position title", key: uuid() },
+    { label: "Start Date", placeholder: "Enter start date", key: uuid() },
+    { label: "End Date", placeholder: "Enter end date", key: uuid() },
+    { label: "Location", placeholder: "Enter location", key: uuid() },
+    { label: "Description", placeholder: "Enter role description", key: uuid() }
   ];
 
   return (
-    <div>
+    <div className="experience">
       <h2>Experience</h2>
       <div>
           {fields.map((field) => {
             return (
               <div key={field.id}>
-                <label htmlFor={field.id}> {field.label} </label>
-                <input type="text" name={field.id} className="personalInput" placeholder={field.placeholder} />
+                <label htmlFor={field.id} key={field.id} > {field.label} </label>
+                <input type="text" name={field.id} className="experienceInput" placeholder={field.placeholder} key={field.id} />
               </div>
           )})}
       </div>

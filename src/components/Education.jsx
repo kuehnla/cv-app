@@ -18,14 +18,14 @@ export default function Education(props) {
   ];
 
   return (
-    <div>
+    <div className="education">
       <h2>Education</h2>
       <div>
           {fields.map((field) => {
             return (
               <div key={field.id}>
-                <label htmlFor={field.id}> {field.label} </label>
-                <input type="text" name={field.id} className="educationInput" placeholder={field.placeholder} />
+                <label htmlFor={field.id} key={field.id} > {field.label} </label>
+                <input type="text" name={field.id} className="educationInput" placeholder={field.placeholder} key={field.id} />
               </div>
           )})}
       </div>
