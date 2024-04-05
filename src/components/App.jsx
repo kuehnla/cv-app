@@ -5,6 +5,7 @@ import DisplayEducation from './DisplayEducation'
 import Education from './Education'
 import Experience from './Experience'
 import Personal from './Personal'
+import '../styles/App.css'
 
 
 export default function App() {
@@ -53,7 +54,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="app">
       <div className="inputContainer">
         <Personal updateValue={updateValue} />
         <Experience updateValue={updateValue} />
@@ -64,6 +65,6 @@ export default function App() {
         <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} />
         <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} />
       </div>
-    </>
+    </div>
   );
 }

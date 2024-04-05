@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import '../styles/App.css'
 
 export default function Experience(props) {
   // [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,8 @@ export default function Experience(props) {
           {fields.map((field) => {
             return (
               <div key={field.state}>
-                <label htmlFor={field.id} > {field.label} </label>
-                <input type="text" name={field.id} className="experienceInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
+                <label htmlFor={field.state} > {field.label} </label>
+                <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>
           )})}
       </div>
