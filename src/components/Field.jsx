@@ -1,4 +1,4 @@
-export default function Field({ label, inputText }) {
+export default function Field({ label, inputText, key }) {
   return (
     <>
 

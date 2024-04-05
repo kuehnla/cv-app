@@ -1,4 +1,6 @@
 import Field from './Field'
+import { v4 as uuid } from 'uuid';
+
 
 export default function Personal () {
 
@@ -14,8 +16,8 @@ export default function Personal () {
     <>
       <form action="" method="post" className="personal">
         <div>
-          {fields.map(() => {
-            return <Field />
+          {fields.map((field) => {
+            return <Field label={field.label} inputText={field.inputText} key={field.id} />
           })}
         </div>
       </form>
