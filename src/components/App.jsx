@@ -17,6 +17,9 @@ export default function App() {
     switch (state) {
       case "fullName" : setFullName(value); break;
       case "email" : setEmail(value); break;
+      case "phone" : setPhone(value); break;
+      case "linkedIn" : setLinkedIn(value); break;
+      case "website" : setWebsite(value); break;
       case null : console.log("error");
     }
   }
@@ -29,7 +32,7 @@ export default function App() {
         <Education />
       </div>
       <div className="displayContainer">
-        <DisplayPersonal fullName={fullName} email={email} />
+        <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} website={website} />
       </div>
     </>
   );
