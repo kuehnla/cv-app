@@ -34,6 +34,7 @@ export default function App() {
    * Jobs state used to add multiple jobs.
    */
   const [jobs, setJobs] = useState([]);
+  const [edus, setEdu] = useState([]);
 
 
   function updateValue(value, state) {
@@ -69,17 +70,24 @@ export default function App() {
     setExpDesc("");
   }
 
+  function resetEducation() {
+    setSchool("");
+    setDegree("");
+    setEduStartDate("");
+    setEduEndDate("");
+  }
+
   return (
     <div className="app">
       <div className="inputContainer">
         <Personal updateValue={updateValue} />
         <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} />
-        <Education updateValue={updateValue} />
+        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
         <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} jobs={jobs} />
-        <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} />
+        <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} edus={edus} />
       </div>
     </div>
   );

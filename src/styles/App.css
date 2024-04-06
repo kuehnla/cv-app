@@ -86,8 +86,12 @@ body {
 
 #fullName, .email,
 .phone, .linkedIn {
-  margin-bottom: 4px;
+  margin-bottom: 16px;
   display: flex;
+}
+
+#email, #phone, #linkedIn {
+  margin: 0;
 }
 
 /* Contact */
@@ -110,7 +114,7 @@ body {
 
 /* Experience */
 .cv-experience {
-  margin: 16px 0 16px 0;
+  margin: 8px 0 16px 0;
 }
 
 #expHeader {
@@ -159,7 +163,7 @@ body {
   grid-column: 1 / 3;
 }
 
-#addExp {
+#addExp, #addEdu {
   border: none;
   color: #fff;
   background-color: #187ff5;
@@ -175,4 +179,11 @@ body {
 
 #addExp:hover {
   cursor: pointer;
+}
+
+/* Education */
+
+#eduHeader {
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
 }
