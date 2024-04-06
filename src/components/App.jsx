@@ -60,11 +60,20 @@ export default function App() {
     }
   }
 
+  function resetExperience() {
+    setCompany("");
+    setPosition("");
+    setExpStartDate("");
+    setExpEndDate("");
+    setExpLocation("");
+    setExpDesc("");
+  }
+
   return (
     <div className="app">
       <div className="inputContainer">
         <Personal updateValue={updateValue} />
-        <Experience updateValue={updateValue} setJobs={setJobs} />
+        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} />
         <Education updateValue={updateValue} />
       </div>
       <div className="displayContainer">

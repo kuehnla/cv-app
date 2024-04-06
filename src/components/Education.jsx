@@ -32,7 +32,8 @@ export default function Education(props) {
                 <label htmlFor={field.state}> {field.label} </label>
                 <input type="text" name={field.state} className="educationInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>
-          )})}
+            )
+          })}
       </div>
     </div>
   )
