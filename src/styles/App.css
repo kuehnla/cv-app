@@ -4,19 +4,77 @@
 
 body {
   margin: 0;
+  background-color: #f3f4f6;
 }
 
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #e4e4e4;
 }
+
+/*
+ * Input
+ */
+ .inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 60px 60px 60px 60px;
+  gap: 32px;
+ }
+
+ .personal,
+ .education,
+ .experience {
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+ }
+
+ .entry {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+  gap: 6px;
+ }
+
+ label {
+  font-weight: 600;
+ }
+
+ h2 {
+  margin-top: 0;
+ }
+
+ input {
+  border: none;
+  background-color: #f3f4f6;
+  height: 4vh;
+  border-radius: 8px;
+  padding-left: 8px;
+ }
+ 
+ input:focus {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: box-shadow 0.2s ease-in 0s;
+ }
+ 
+
+ #addExp {
+  font-size: 24px;
+ }
+ 
+ .personal {
+ }
 /*
  * Preview
  */
 .displayContainer {
   background-color: #fff;
   padding: 24px;
+  margin: 60px 60px 60px 60px;
+  height: 100vh;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .cv-personal {

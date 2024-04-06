@@ -22,7 +22,9 @@ export default function Experience(props) {
     { label: "Description", placeholder: "Enter role description", key: uuid(), state:"expDesc" }
   ];
 
-
+  function handleAddJob(e) {
+    props.setJobs((prevJobs) => [...prevJobs, ])
+  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -35,12 +37,15 @@ export default function Experience(props) {
       <div>
           {fields.map((field) => {
             return (
-              <div key={field.state}>
+              <div key={field.state} className="entry">
                 <label htmlFor={field.state} > {field.label} </label>
                 <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>
           )})}
       </div>
+      <button id="addExp" onClick={handleAddJob}>
+        +
+      </button>
     </div>
   )
 }

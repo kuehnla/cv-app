@@ -10,6 +10,9 @@ import '../styles/App.css'
 
 export default function App() {
 
+  /*
+   * Text states used to re-render the preview upon an input value changing.
+   */
   const [fullName, setFullName] = useState("Kimberly Wexler");
   const [email, setEmail] = useState("kwexler@hhm.com");
   const [phone, setPhone] = useState("555-555-5555");
@@ -26,6 +29,12 @@ export default function App() {
   const [degree, setDegree] = useState("B.S. in Materials Engineering");
   const [eduStartDate, setEduStartDate] = useState("09/01/1999");
   const [eduEndDate, setEduEndDate] = useState("05/15/2004");
+
+  /*
+   * Jobs state used to add multiple jobs.
+   */
+  const [jobs, setJobs] = useState([]);
+
 
   function updateValue(value, state) {
     switch (state) {
@@ -55,12 +64,12 @@ export default function App() {
     <div className="app">
       <div className="inputContainer">
         <Personal updateValue={updateValue} />
-        <Experience updateValue={updateValue} />
+        <Experience updateValue={updateValue} setJobs={setJobs} />
         <Education updateValue={updateValue} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
-        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} />
+        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} jobs={jobs} />
         <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} />
       </div>
     </div>

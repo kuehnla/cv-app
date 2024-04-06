@@ -28,7 +28,7 @@ export default function Education(props) {
       <div>
           {fields.map((field) => {
             return (
-              <div key={field.state}>
+              <div key={field.state} className="entry">
                 <label htmlFor={field.state}> {field.label} </label>
                 <input type="text" name={field.state} className="educationInput" placeholder={field.placeholder} id={field.state} onChange={handleChange} />
               </div>

@@ -15,6 +15,6 @@ export default function DisplayExperience(props) {
   )
 }
 
-function Company({company}) {
-  
-}
+// function Company({company}) {
+
+// }

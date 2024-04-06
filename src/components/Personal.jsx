@@ -7,7 +7,7 @@ export default function Personal(props) {
     { label: "Full Name", placeholder: "First and last name", state: "fullName" },
     { label: "Email", placeholder: "Enter email", state: "email" },
     { label: "Phone", placeholder: "Enter phone number", state: "phone"},
-    { label: "LinkedIn", placeholder: "Enter link", state: "linkedIn" },
+    { label: "LinkedIn", placeholder: "/in/kwexler", state: "linkedIn" },
   ];
 
   function handleChange(e) {
@@ -21,7 +21,7 @@ export default function Personal(props) {
         <div>
           {fields.map((field) => {
             return (
-              <div key={field.state} >
+              <div key={field.state} className="entry" >
                 <label htmlFor={field.state}> {field.label} </label>
                 <input type="text" name={field.state} className="personalInput" id={field.state} placeholder={field.placeholder} onChange={handleChange} />
              </div>
