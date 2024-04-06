@@ -55,7 +55,7 @@ export default function Experience({company, position, expStartDate, expEndDate,
           )})}
       </div>
       <button id="addExp" onClick={handleAddJob}>
-        Add Experience +
+        Save
       </button>
     </div>
   )
