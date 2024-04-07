@@ -20,18 +20,20 @@ export default function App() {
 
   const [company, setCompany] = useState("Midsize Company");
   const [position, setPosition] = useState("Personality Hire");
-  const [expStartDate, setExpStartDate] = useState("05/01/2021");
-  const [expEndDate, setExpEndDate] = useState("04/01/2024");
+  const [expStartDate, setExpStartDate] = useState("May 2021");
+  const [expEndDate, setExpEndDate] = useState("Apr. 2024");
   const [expLocation, setExpLocation] = useState("Chicago, IL");
   const [expDesc, setExpDesc] = useState("I was a personality hire.");
+  const [isExpPreview, setIsExpPreview] = useState(true);
 
   const [school, setSchool] = useState("State university");
   const [degree, setDegree] = useState("B.S. in Materials Engineering");
-  const [eduStartDate, setEduStartDate] = useState("09/01/1999");
-  const [eduEndDate, setEduEndDate] = useState("05/15/2004");
+  const [eduStartDate, setEduStartDate] = useState("Sep. 1999");
+  const [eduEndDate, setEduEndDate] = useState("May 2005");
+  const [isEduPreview, setIsEduPreview] = useState(true);
 
   /*
-   * Jobs state used to add multiple jobs.
+   * Jobs, educations to render multiple.
    */
   const [jobs, setJobs] = useState([]);
   const [edus, setEdu] = useState([]);
@@ -68,6 +70,7 @@ export default function App() {
     setExpEndDate("");
     setExpLocation("");
     setExpDesc("");
+    setIsExpPreview(false);
   }
 
   function resetEducation() {
@@ -75,19 +78,20 @@ export default function App() {
     setDegree("");
     setEduStartDate("");
     setEduEndDate("");
+    setIsEduPreview(false);
   }
 
   return (
     <div className="app">
       <div className="inputContainer">
         <Personal updateValue={updateValue} />
-        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} />
-        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} />
+        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} />
+        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} setIsPreview={setIsEduPreview} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
-        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} jobs={jobs} />
-        <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} edus={edus} />
+        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} jobs={jobs} isPreview={isExpPreview} />
+        <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} edus={edus} isPreview={isEduPreview} />
       </div>
     </div>
   );

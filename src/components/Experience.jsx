@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
 
-export default function Experience({company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience}) {
+export default function Experience({company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview}) {
   // [isOpen, setIsOpen] = useState(false);
   
   /*
@@ -40,6 +40,7 @@ export default function Experience({company, position, expStartDate, expEndDate,
   function handleChange(e) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
+    setIsExpPreview(true);
   }
 
   return (

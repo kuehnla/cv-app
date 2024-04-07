@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export default function Education({school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation}) {
+export default function Education({school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation , setIsPreview}) {
   // [isOpen, setIsOpen] = useState(false);
   /*
    * If isOpen
@@ -19,6 +19,7 @@ export default function Education({school, degree, eduStartDate, eduEndDate, set
   function handleChange(e) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
+    setIsPreview(true);
   }
 
   function handleAddEdu(e) {

@@ -74,6 +74,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+/* Personal */
 .cv-personal {
   display: flex;
   flex-direction: column;
@@ -177,7 +178,7 @@ body {
   display: flex;
 }
 
-#addExp:hover {
+#addExp:hover, #addEdu:hover {
   cursor: pointer;
 }
 
@@ -186,4 +187,37 @@ body {
 #eduHeader {
   padding-bottom: 4px;
   border-bottom: 1px solid black;
+}
+
+.eduPreview, .edu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#eduSchool {
+  grid-template-columns: 1 / 2;
+  grid-template-rows: 2 / 3;
+  font-weight: bold;
+}
+
+#eduDegree {
+  grid-template-columns: 1 / 2;
+  grid-template-columns: 2 / 3;
+  font-style: italic;
+}
+
+#eduDuration {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edu p, .eduPreview p {
+  margin: 2px;
+}
+
+.edu, .eduPreview {
+  margin-bottom: 16px;
 }
