@@ -26,7 +26,8 @@ body {
  .education,
  .experience,
  .collapsed,
- .editEntry {
+ .editEntry,
+ .clear {
   background-color: #fff;
   padding: 16px;
   border-radius: 16px;
@@ -187,7 +188,7 @@ body {
 #cancel:hover, .eduInputHeader:hover,
 .expInputHeader:hover, .personalInputHeader:hover,
 .collapsed:hover, #trashLogo:hover,
-#penLogo:hover  {
+#penLogo:hover, .clear:hover  {
   cursor: pointer;
 }
 
@@ -294,4 +295,23 @@ body {
 .updateBtns {
   display: flex;
   gap: 24px;
+}
+
+/* Clear */
+.clear {
+  display: flex;
+  gap: 4px;
+  padding: 16px;
+  justify-content: center;
+  color: #b91c1c;
+  margin: 0 0 16px;
+}
+
+#clearIcon {
+  width: 20px;
+  color: #b91c1c;
+}
+
+h4{ 
+  margin: 0; 
 }

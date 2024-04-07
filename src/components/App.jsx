@@ -101,6 +101,13 @@ export default function App() {
     setIsEduPreview(false);
   }
 
+  function resetPersonal() {
+    setFullName("");
+    setEmail("");
+    setPhone("");
+    setLinkedIn("");
+  }
+
   function handleEdit(e, index, type) {
     e.preventDefault();
     setEditIndex(index);
@@ -130,7 +137,6 @@ export default function App() {
         }
       })
     }
-
   }
 
   function handleRemove(e, index, type) {
@@ -142,10 +148,21 @@ export default function App() {
     }
   }
 
+  function handleClear(e) {
+    e.preventDefault();
+    setJobs([]);
+    setEdu([]);
+    setIsEduEdit(false);
+    setIsExpEdit(false);
+    resetEducation();
+    resetExperience();
+    resetPersonal();
+  }
+
   return (
     <div className="app">
       <div className="inputContainer">
-        <Clear />
+        <Clear handleClear={handleClear} />
 
         <CollapedSection isOpen={isPersonalOpen} title={"Personal Information"} icon={personLogo} dropdown={dropdown} state="isPersonalOpen" updateOpen={updateOpen} />
         <Personal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
