@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
 
-export default function Experience({company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview}) {
+export default function Experience({ company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview }) {
   // [isOpen, setIsOpen] = useState(false);
-  
+
   /*
    * If isOpen
    * return form
@@ -16,10 +16,10 @@ export default function Experience({company, position, expStartDate, expEndDate,
   const fields = [
     { label: "Company", placeholder: "Enter company name", key: uuid(), state: "company", value: company },
     { label: "Position", placeholder: "Enter position title", key: uuid(), state: "position", value: position },
-    { label: "Start Date", placeholder: "Enter start date", key: uuid(), state:"expStartDate", value: expStartDate },
-    { label: "End Date", placeholder: "Enter end date", key: uuid(), state:"expEndDate", value: expEndDate },
-    { label: "Location", placeholder: "Enter location", key: uuid(), state:"expLocation", value: expLocation },
-    { label: "Description", placeholder: "Enter role description", key: uuid(), state:"expDesc", value: expDesc }
+    { label: "Start Date", placeholder: "Enter start date", key: uuid(), state: "expStartDate", value: expStartDate },
+    { label: "End Date", placeholder: "Enter end date", key: uuid(), state: "expEndDate", value: expEndDate },
+    { label: "Location", placeholder: "Enter location", key: uuid(), state: "expLocation", value: expLocation },
+    { label: "Description", placeholder: "Enter role description", key: uuid(), state: "expDesc", value: expDesc }
   ];
 
   function handleAddJob(e) {
@@ -47,17 +47,23 @@ export default function Experience({company, position, expStartDate, expEndDate,
     <div className="experience">
       <h2>Experience</h2>
       <div>
-          {fields.map((field) => {
-            return (
-              <div key={field.state} className="entry">
-                <label htmlFor={field.state} > {field.label} </label>
-                <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder} id={field.state} value={field.value} onChange={handleChange} />
-              </div>
-          )})}
+        {fields.map((field) => {
+          return (
+            <div key={field.state} className="entry">
+              <label htmlFor={field.state} > {field.label} </label>
+              <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder} id={field.state} value={field.value} onChange={handleChange} />
+            </div>
+          )
+        })}
       </div>
-      <button id="addExp" onClick={handleAddJob}>
-        Save
-      </button>
+      <div className="buttons">
+        <button id="cancel" onClick={resetExperience}>
+          Cancel
+        </button>
+        <button id="addExp" onClick={handleAddJob}>
+          Save
+        </button>
+      </div>
     </div>
   )
 }
