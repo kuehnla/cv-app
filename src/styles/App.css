@@ -25,7 +25,8 @@ body {
  .personal,
  .education,
  .experience,
- .collapsed {
+ .collapsed,
+ .editJob {
   background-color: #fff;
   padding: 16px;
   border-radius: 16px;
@@ -185,7 +186,8 @@ body {
 #addExp:hover, #addEdu:hover,
 #cancel:hover, .eduInputHeader:hover,
 .expInputHeader:hover, .personalInputHeader:hover,
-.collapsed:hover  {
+.collapsed:hover, #trashLogo:hover,
+#penLogo:hover  {
   cursor: pointer;
 }
 
@@ -267,4 +269,29 @@ body {
 #sectionDropdown {
   width: 20px;
   margin-left: auto;
+}
+
+/* Edit List */
+
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editJob {
+  display: flex;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  justify-content: space-between;
+}
+
+#penLogo, #trashLogo {
+  width: 24px;
+  gap: 32px;
+}
+
+.updateBtns {
+  display: flex;
+  gap: 24px;
 }

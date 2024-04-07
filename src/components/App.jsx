@@ -6,6 +6,7 @@ import CollapedSection from './CollapedSection'
 import Education from './Education'
 import Experience from './Experience'
 import Personal from './Personal'
+import EditList from './EditList'
 import eduLogo from '../assets/school.svg'
 import expLogo from '../assets/briefcase.svg'
 import personLogo from '../assets/person.svg'
@@ -96,15 +97,29 @@ export default function App() {
     setIsEduPreview(false);
   }
 
+  function handleEdit(e, index) {
+    e.preventDefault();
+    console.log(index);
+  }
+
+  function handleRemove(e, index) {
+    e.preventDefault();
+    console.log(index)
+  }
+
   return (
     <div className="app">
       <div className="inputContainer">
         <CollapedSection isOpen={isPersonalOpen} title={"Personal Information"} icon={personLogo} dropdown={dropdown} state="isPersonalOpen" updateOpen={updateOpen} />
         <Personal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
+
         <CollapedSection isOpen={isExpOpen} title={"Experience"} icon={expLogo} dropdown={dropdown} state="isExpOpen" updateOpen={updateOpen} />
         <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} />
+
         <CollapedSection isOpen={isEduOpen} title={"Education"} icon={eduLogo} dropdown={dropdown} state="isEduOpen" updateOpen={updateOpen} />
         <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} isOpen={isEduOpen} updateOpen={updateOpen} />
+
+        <EditList jobs={jobs} edus={edus} handleEdit={handleEdit} handleRemove={handleRemove} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
