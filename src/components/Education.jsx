@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export default function Education({ school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation, setIsPreview }) {
+export default function Education({ school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation, setIsPreview, eduLogo, dropdown }) {
   // [isOpen, setIsOpen] = useState(false);
   /*
    * If isOpen
@@ -37,7 +37,11 @@ export default function Education({ school, degree, eduStartDate, eduEndDate, se
 
   return (
     <div className="education">
-      <h2>Education</h2>
+      <div className="eduInputHeader">
+        <img src={eduLogo} id="sectionLogo" />
+        <h2>Education</h2>
+        <img src={dropdown} id="sectionDropdown" />
+      </div>
       <div>
         {fields.map((field) => {
           return (
@@ -49,7 +53,7 @@ export default function Education({ school, degree, eduStartDate, eduEndDate, se
         })}
       </div>
       <div className="buttons">
-      <button id="cancel" onClick={resetEducation}>
+        <button id="cancel" onClick={resetEducation}>
           Cancel
         </button>
         <button id="addEdu" onClick={handleAddEdu}>

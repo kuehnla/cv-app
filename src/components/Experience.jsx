@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
 
-export default function Experience({ company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview }) {
+export default function Experience({ company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview, expLogo, dropdown }) {
   // [isOpen, setIsOpen] = useState(false);
 
   /*
@@ -45,7 +45,11 @@ export default function Experience({ company, position, expStartDate, expEndDate
 
   return (
     <div className="experience">
-      <h2>Experience</h2>
+      <div className="expInputHeader">
+        <img src={expLogo} id="sectionLogo" />
+        <h2>Experience</h2>
+        <img src={dropdown} id="sectionDropdown" />
+      </div>
       <div>
         {fields.map((field) => {
           return (

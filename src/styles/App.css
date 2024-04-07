@@ -9,7 +9,7 @@ body {
 
 .app {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 4fr;
 }
 
 /*
@@ -53,6 +53,10 @@ body {
   border-radius: 8px;
   padding-left: 8px;
  }
+
+#fullName.personalInput {
+  margin-bottom: 0;
+}
  
  input:focus {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -236,5 +240,27 @@ body {
   border-radius: 8px;
   margin-top: 16px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-left: auto;
+}
+
+.expInputHeader, .eduInputHeader,
+.personalInputHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.expInputHeader h2, .eduInputHeader h2,
+.personalInputHeader h2 {
+  margin-bottom: 0;
+}
+
+#sectionLogo {
+  width: 24px;
+}
+
+#sectionDropdown {
+  width: 20px;
   margin-left: auto;
 }

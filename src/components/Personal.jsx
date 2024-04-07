@@ -1,35 +1,40 @@
 import { v4 as uuid } from 'uuid';
 
 
-export default function Personal(props) {
+export default function Personal({ updateValue, personLogo, dropdown }) {
 
   const fields = [
     { label: "Full Name", placeholder: "First and last name", state: "fullName" },
     { label: "Email", placeholder: "Enter email", state: "email" },
-    { label: "Phone", placeholder: "Enter phone number", state: "phone"},
+    { label: "Phone", placeholder: "Enter phone number", state: "phone" },
     { label: "LinkedIn", placeholder: "/in/kwexler", state: "linkedIn" },
   ];
 
   function handleChange(e) {
     e.preventDefault();
-    props.updateValue(e.target.value, e.target.id);
+    updateValue(e.target.value, e.target.id);
   }
 
   return (
     <div className="personal">
-      <h2>Personal Information</h2>
-        <div>
-          {fields.map((field) => {
-            return (
-              <div key={field.state} className="entry" >
-                <label htmlFor={field.state}> {field.label} </label>
-                <input type="text" name={field.state} className="personalInput" id={field.state} placeholder={field.placeholder} onChange={handleChange} />
-             </div>
-          )})}
-        </div>
+      <div className="personalInputHeader">
+        <img src={personLogo} id="sectionLogo" />
+        <h2>Personal Information</h2>
+        <img src={dropdown} id="sectionDropdown" />
+      </div>
+      <div>
+        {fields.map((field) => {
+          return (
+            <div key={field.state} className="entry" >
+              <label htmlFor={field.state}> {field.label} </label>
+              <input type="text" name={field.state} className="personalInput" id={field.state} placeholder={field.placeholder} onChange={handleChange} />
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
-  
+
   /*
    * return 
    * Personal Information
