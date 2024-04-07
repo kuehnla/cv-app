@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import '../styles/App.css'
-export default function DisplayEducation({ school, degree, eduStartDate, eduEndDate, edus, isPreview }) {
+export default function DisplayEducation({ school, degree, eduStartDate, eduEndDate, edus, isPreview, isEdit }) {
   return (
     <div className="cv-education">
       <h2 id="eduHeader">Education</h2>
       {edus.map((edu) => {
         return (
           <div key={edu.id} className="edu">
-            <p id="eduSchool">{edu.school}</p>
-            <p id="eduDegree">{edu.degree}</p>
+            <p id="eduSchool">{!isEdit ? edu.school : school}</p>
+            <p id="eduDegree">{!isEdit ? edu.degree : degree}</p>
             <div id="eduDuration">
-              <p id="eduStart">{edu.eduStartDate} {edu.eduStartDate ? "-" : null}</p> &nbsp;
-              <p id="eduEnd">{edu.eduEndDate}</p>
+              <p id="eduStart">{!isEdit ? edu.eduStartDate : eduStartDate} {edu.eduStartDate && edu.eduEndDate || (isEdit && eduStartDate && eduEndDate) ? "-" : null}</p> &nbsp;
+              <p id="eduEnd">{!isEdit ? edu.eduEndDate : eduStartDate}</p>
             </div>
           </div>
         )

@@ -5,16 +5,7 @@ export default function Experience(
   { isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, 
     setJobs, jobs, resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit
   }) {
-  // [isOpen, setIsOpen] = useState(false);
 
-  /*
-   * If isOpen
-   * return form
-   * 
-   * return + Experience
-  */
-
-  // FORM
   if (!isOpen) return;
 
   const fields = [
@@ -71,7 +62,8 @@ export default function Experience(
           return (
             <div key={field.state} className="entry">
               <label htmlFor={field.state} > {field.label} </label>
-              <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder} id={field.state} value={field.value} onChange={handleChange} />
+              <input type="text" name={field.state} className="experienceInput" placeholder={field.placeholder}
+               id={field.state} value={field.value} onChange={handleChange} />
             </div>
           )
         })}

@@ -2,15 +2,9 @@ import { v4 as uuid } from 'uuid';
 
 export default function Education(
   { isOpen, school, degree, eduStartDate, eduEndDate, setEdu,
-  updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex
+  updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit, edus
   }) {
-  // [isOpen, setIsOpen] = useState(false);
-  /*
-   * If isOpen
-   * return form
-   * 
-   * return + Education
-  */
+
   if (!isOpen) return;
 
   const fields = [
@@ -28,7 +22,7 @@ export default function Education(
   function handleChange(e) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
-    setIsPreview(true);
+    setIsPreview(!isEdit);
   }
 
   function handleAddEdu(e) {
@@ -40,7 +34,15 @@ export default function Education(
       eduStartDate: eduStartDate,
       eduEndDate: eduEndDate,
     }
-    setEdu((prevEducation) => [...prevEducation, education]);
+    console.log(isEdit);
+    if (!isEdit) {
+      setEdu((prevEducation) => [...prevEducation, education]);
+    } else {
+      const edusCopy = Array.from(edus);
+      edusCopy[editIndex] = education;
+      setEdu(edusCopy);
+    }
+    setIsEdit(false);
     resetEducation();
   }
 

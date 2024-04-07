@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import '../styles/App.css'
 
-export default function DisplayExperience({ company, position, expStartDate, expEndDate, expLocation, expDesc, jobs, isPreview, isEdit, editIndex }) {
+export default function DisplayExperience({ company, position, expStartDate, expEndDate, expLocation, expDesc, jobs, isPreview, isEdit }) {
   return (
     <div className="cv-experience">
       <h2 id="expHeader">Experience</h2>
@@ -11,7 +10,7 @@ export default function DisplayExperience({ company, position, expStartDate, exp
             <p id="jobCompany">{!isEdit ? job.company : company}</p>
             <p id="jobPosition">{!isEdit ? job.position : position}</p>
             <div id="jobDuration">
-              <p id="jobStart">{!isEdit ? job.expStartDate : expStartDate} {expStartDate && expEndDate ? "-" : null}</p> &nbsp;
+              <p id="jobStart">{!isEdit ? job.expStartDate : expStartDate} {expStartDate && expEndDate || (isEdit && expStartDate && expEndDate) ? "-" : null}</p> &nbsp;
               <p id="jobEnd">{!isEdit ? job.expEndDate : expEndDate}</p>
             </div>
             <p id="jobLoc">{!isEdit ? job.expLocation : expLocation }</p>
@@ -35,7 +34,3 @@ export default function DisplayExperience({ company, position, expStartDate, exp
     </div>
   )
 }
-
-// function Company({company}) {
-
-// }

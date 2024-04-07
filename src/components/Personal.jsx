@@ -1,6 +1,3 @@
-import { v4 as uuid } from 'uuid';
-
-
 export default function Personal({ fullName, email, phone, linkedIn, isOpen, updateValue, personLogo, dropdown, updateOpen }) {
 
   if (!isOpen) return;
