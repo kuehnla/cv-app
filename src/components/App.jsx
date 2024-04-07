@@ -24,19 +24,19 @@ export default function App() {
   const [linkedIn, setLinkedIn] = useState("/in/kwexler");
   const [isPersonalOpen, setIsPersonalOpen] = useState(true);
 
-  const [company, setCompany] = useState("Midsize Company");
-  const [position, setPosition] = useState("Personality Hire");
-  const [expStartDate, setExpStartDate] = useState("May 2021");
-  const [expEndDate, setExpEndDate] = useState("Apr. 2024");
-  const [expLocation, setExpLocation] = useState("Chicago, IL");
-  const [expDesc, setExpDesc] = useState("I was a personality hire.");
+  const [company, setCompany] = useState("Hamlin, Hamlin, & McGill");
+  const [position, setPosition] = useState("Attorney");
+  const [expStartDate, setExpStartDate] = useState("May 1999");
+  const [expEndDate, setExpEndDate] = useState("Apr. 2004");
+  const [expLocation, setExpLocation] = useState("Albuquerque, NM");
+  const [expDesc, setExpDesc] = useState("I know we're never supposed to say our clients are guilty, but hey, not my client anymore. He's guilty as sin.");
   const [isExpPreview, setIsExpPreview] = useState(true);
   const [isExpOpen, setIsExpOpen] = useState(false);
 
-  const [school, setSchool] = useState("State university");
-  const [degree, setDegree] = useState("B.S. in Materials Engineering");
+  const [school, setSchool] = useState("University of New Mexico School of Law");
+  const [degree, setDegree] = useState("Juris Doctor");
   const [eduStartDate, setEduStartDate] = useState("Sep. 1999");
-  const [eduEndDate, setEduEndDate] = useState("May 2005");
+  const [eduEndDate, setEduEndDate] = useState("May 2002");
   const [isEduPreview, setIsEduPreview] = useState(true);
   const [isEduOpen, setIsEduOpen] = useState(false);
 
@@ -100,7 +100,7 @@ export default function App() {
     <div className="app">
       <div className="inputContainer">
         <CollapedSection isOpen={isPersonalOpen} title={"Personal Information"} icon={personLogo} dropdown={dropdown} state="isPersonalOpen" updateOpen={updateOpen} />
-        <Personal updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
+        <Personal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
         <CollapedSection isOpen={isExpOpen} title={"Experience"} icon={expLogo} dropdown={dropdown} state="isExpOpen" updateOpen={updateOpen} />
         <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} />
         <CollapedSection isOpen={isEduOpen} title={"Education"} icon={eduLogo} dropdown={dropdown} state="isEduOpen" updateOpen={updateOpen} />

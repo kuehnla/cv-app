@@ -182,7 +182,10 @@ body {
   display: flex;
 }
 
-#addExp:hover, #addEdu:hover {
+#addExp:hover, #addEdu:hover,
+#cancel:hover, .eduInputHeader:hover,
+.expInputHeader:hover, .personalInputHeader:hover,
+.collapsed:hover  {
   cursor: pointer;
 }
 
