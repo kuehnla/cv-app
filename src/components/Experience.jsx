@@ -1,7 +1,10 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
 
-export default function Experience({ isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen }) {
+export default function Experience(
+  { isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, 
+    setJobs, jobs, resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit
+  }) {
   // [isOpen, setIsOpen] = useState(false);
 
   /*
@@ -34,7 +37,14 @@ export default function Experience({ isOpen, company, position, expStartDate, ex
       expLocation: expLocation,
       expDesc: expDesc,
     }
-    setJobs((prevJobs) => [...prevJobs, experience]);
+    if (!isEdit) {
+      setJobs((prevJobs) => [...prevJobs, experience]);
+    } else {
+      const jobsCopy = Array.from(jobs);
+      jobsCopy[editIndex] = experience;
+      setJobs(jobsCopy);
+    }
+    setIsEdit(false);
     resetExperience();
   }
 
@@ -46,7 +56,7 @@ export default function Experience({ isOpen, company, position, expStartDate, ex
   function handleChange(e) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
-    setIsExpPreview(true);
+    setIsExpPreview(!isEdit);
   }
 
   return (

@@ -1,6 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
-export default function Education({ isOpen, school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen }) {
+export default function Education(
+  { isOpen, school, degree, eduStartDate, eduEndDate, setEdu,
+  updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex
+  }) {
   // [isOpen, setIsOpen] = useState(false);
   /*
    * If isOpen
@@ -8,7 +11,7 @@ export default function Education({ isOpen, school, degree, eduStartDate, eduEnd
    * 
    * return + Education
   */
- if (!isOpen) return;
+  if (!isOpen) return;
 
   const fields = [
     { label: "School", placeholder: "Enter university, college, or high school", key: uuid(), state: "school", value: school },
@@ -53,7 +56,8 @@ export default function Education({ isOpen, school, degree, eduStartDate, eduEnd
           return (
             <div key={field.state} className="entry">
               <label htmlFor={field.state}> {field.label} </label>
-              <input type="text" name={field.state} className="educationInput" placeholder={field.placeholder} id={field.state} value={field.value} onChange={handleChange} />
+              <input type="text" name={field.state} className="educationInput" placeholder={field.placeholder} id={field.state}
+                value={field.value} onChange={handleChange} />
             </div>
           )
         })}

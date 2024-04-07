@@ -33,6 +33,7 @@ export default function App() {
   const [expDesc, setExpDesc] = useState("I know we're never supposed to say our clients are guilty, but hey, not my client anymore. He's guilty as sin.");
   const [isExpPreview, setIsExpPreview] = useState(true);
   const [isExpOpen, setIsExpOpen] = useState(false);
+  const [isExpEdit, setIsExpEdit] = useState(false);
 
   const [school, setSchool] = useState("University of New Mexico School of Law");
   const [degree, setDegree] = useState("Juris Doctor");
@@ -40,6 +41,8 @@ export default function App() {
   const [eduEndDate, setEduEndDate] = useState("May 2002");
   const [isEduPreview, setIsEduPreview] = useState(true);
   const [isEduOpen, setIsEduOpen] = useState(false);
+  const [isEduEdit, setIsEduEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState(0);
 
   /*
    * Jobs, educations to render multiple.
@@ -97,14 +100,33 @@ export default function App() {
     setIsEduPreview(false);
   }
 
-  function handleEdit(e, index) {
+  function handleEdit(e, index, type) {
     e.preventDefault();
-    console.log(index);
+    setEditIndex(index);
+    if (type === "exp") {
+      resetExperience();
+      setIsExpEdit(true);
+      jobs.map((job, i) => {
+        if (index === i) {
+          setCompany(job.company);
+          setPosition(job.position);
+          setExpStartDate(job.expStartDate);
+          setExpEndDate(job.expEndDate);
+          setExpLocation(job.expLocation);
+          setExpDesc(job.expDesc);
+        }
+      })
+    }
+    
   }
 
-  function handleRemove(e, index) {
+  function handleRemove(e, index, type) {
     e.preventDefault();
-    console.log(index)
+    if (type === "exp") {
+      setJobs(jobs => jobs.filter((_, i) => i !== index));
+    } else {
+      setEdu(edus => edus.filter((_, i) => i !== index));
+    }
   }
 
   return (
@@ -114,16 +136,20 @@ export default function App() {
         <Personal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
 
         <CollapedSection isOpen={isExpOpen} title={"Experience"} icon={expLogo} dropdown={dropdown} state="isExpOpen" updateOpen={updateOpen} />
-        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} />
+        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation}
+         expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} jobs={jobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} 
+         dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} isEdit={isExpEdit} editIndex={editIndex} setIsEdit={setIsExpEdit} />
 
         <CollapedSection isOpen={isEduOpen} title={"Education"} icon={eduLogo} dropdown={dropdown} state="isEduOpen" updateOpen={updateOpen} />
-        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} isOpen={isEduOpen} updateOpen={updateOpen} />
+        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} 
+        resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} isOpen={isEduOpen} updateOpen={updateOpen} isEdit={isEduEdit} editIndex={editIndex} />
 
         <EditList jobs={jobs} edus={edus} handleEdit={handleEdit} handleRemove={handleRemove} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
-        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} jobs={jobs} isPreview={isExpPreview}  />
+        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate}
+         expLocation={expLocation} expDesc={expDesc} jobs={jobs} isPreview={isExpPreview} isEdit={isExpEdit} editIndex={editIndex} />
         <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} edus={edus} isPreview={isEduPreview} />
       </div>
     </div>
