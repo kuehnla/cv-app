@@ -11,7 +11,7 @@ export default function DisplayExperience({ company, position, expStartDate, exp
             <p id="jobCompany">{job.company}</p>
             <p id="jobPosition">{job.position}</p>
             <div id="jobDuration">
-              <p id="jobStart">{job.expStartDate} -</p> &nbsp;
+              <p id="jobStart">{job.expStartDate} {expStartDate && expEndDate ? "-" : null}</p> &nbsp;
               <p id="jobEnd">{job.expEndDate}</p>
             </div>
             <p id="jobLoc">{job.expLocation}</p>

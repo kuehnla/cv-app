@@ -1,7 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
 
-export default function Personal({ updateValue, personLogo, dropdown }) {
+export default function Personal({ isOpen, updateValue, personLogo, dropdown, updateOpen }) {
+
+  if (!isOpen) return;
 
   const fields = [
     { label: "Full Name", placeholder: "First and last name", state: "fullName" },
@@ -15,9 +17,14 @@ export default function Personal({ updateValue, personLogo, dropdown }) {
     updateValue(e.target.value, e.target.id);
   }
 
+  function handleClick(e) {
+    e.preventDefault();
+    updateOpen("isPersonalOpen");
+  }
+
   return (
     <div className="personal">
-      <div className="personalInputHeader">
+      <div className="personalInputHeader" onClick={handleClick}>
         <img src={personLogo} id="sectionLogo" />
         <h2>Personal Information</h2>
         <img src={dropdown} id="sectionDropdown" />

@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
 
-export default function Experience({ company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview, expLogo, dropdown }) {
+export default function Experience({ isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen }) {
   // [isOpen, setIsOpen] = useState(false);
 
   /*
@@ -12,6 +12,7 @@ export default function Experience({ company, position, expStartDate, expEndDate
   */
 
   // FORM
+  if (!isOpen) return;
 
   const fields = [
     { label: "Company", placeholder: "Enter company name", key: uuid(), state: "company", value: company },
@@ -37,6 +38,11 @@ export default function Experience({ company, position, expStartDate, expEndDate
     resetExperience();
   }
 
+  function handleClick(e) {
+    e.preventDefault();
+    updateOpen("isExpOpen");
+  }
+
   function handleChange(e) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
@@ -45,7 +51,7 @@ export default function Experience({ company, position, expStartDate, expEndDate
 
   return (
     <div className="experience">
-      <div className="expInputHeader">
+      <div className="expInputHeader" onClick={handleClick}>
         <img src={expLogo} id="sectionLogo" />
         <h2>Experience</h2>
         <img src={dropdown} id="sectionDropdown" />

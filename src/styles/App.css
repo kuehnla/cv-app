@@ -24,8 +24,9 @@ body {
 
  .personal,
  .education,
- .experience {
-  background-color: white;
+ .experience,
+ .collapsed {
+  background-color: #fff;
   padding: 16px;
   border-radius: 16px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -244,7 +245,7 @@ body {
 }
 
 .expInputHeader, .eduInputHeader,
-.personalInputHeader {
+.personalInputHeader, .collapsed {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -252,7 +253,7 @@ body {
 }
 
 .expInputHeader h2, .eduInputHeader h2,
-.personalInputHeader h2 {
+.personalInputHeader h2, .collapsed h2 {
   margin-bottom: 0;
 }
 

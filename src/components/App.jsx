@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DisplayPersonal from './DisplayPersonal'
 import DisplayExperience from './DisplayExperience'
 import DisplayEducation from './DisplayEducation'
+import CollapedSection from './CollapedSection'
 import Education from './Education'
 import Experience from './Experience'
 import Personal from './Personal'
@@ -21,6 +22,7 @@ export default function App() {
   const [email, setEmail] = useState("kwexler@hhm.com");
   const [phone, setPhone] = useState("555-555-5555");
   const [linkedIn, setLinkedIn] = useState("/in/kwexler");
+  const [isPersonalOpen, setIsPersonalOpen] = useState(true);
 
   const [company, setCompany] = useState("Midsize Company");
   const [position, setPosition] = useState("Personality Hire");
@@ -29,12 +31,14 @@ export default function App() {
   const [expLocation, setExpLocation] = useState("Chicago, IL");
   const [expDesc, setExpDesc] = useState("I was a personality hire.");
   const [isExpPreview, setIsExpPreview] = useState(true);
+  const [isExpOpen, setIsExpOpen] = useState(false);
 
   const [school, setSchool] = useState("State university");
   const [degree, setDegree] = useState("B.S. in Materials Engineering");
   const [eduStartDate, setEduStartDate] = useState("Sep. 1999");
   const [eduEndDate, setEduEndDate] = useState("May 2005");
   const [isEduPreview, setIsEduPreview] = useState(true);
+  const [isEduOpen, setIsEduOpen] = useState(false);
 
   /*
    * Jobs, educations to render multiple.
@@ -42,6 +46,13 @@ export default function App() {
   const [jobs, setJobs] = useState([]);
   const [edus, setEdu] = useState([]);
 
+  function updateOpen(state) {
+    switch (state) {
+      case "isPersonalOpen" : setIsPersonalOpen(isPersonalOpen === true ? false : true); break;
+      case "isEduOpen" : setIsEduOpen(isEduOpen === true ? false : true); break;
+      case "isExpOpen" : setIsExpOpen(isExpOpen === true ? false : true); break;
+    }
+  }
 
   function updateValue(value, state) {
     switch (state) {
@@ -88,9 +99,12 @@ export default function App() {
   return (
     <div className="app">
       <div className="inputContainer">
-        <Personal updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} />
-        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} dropdown={dropdown} />
-        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} />
+        <CollapedSection isOpen={isPersonalOpen} title={"Personal Information"} icon={personLogo} dropdown={dropdown} state="isPersonalOpen" updateOpen={updateOpen} />
+        <Personal updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
+        <CollapedSection isOpen={isExpOpen} title={"Experience"} icon={expLogo} dropdown={dropdown} state="isExpOpen" updateOpen={updateOpen} />
+        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation} expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo} dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} />
+        <CollapedSection isOpen={isEduOpen} title={"Education"} icon={eduLogo} dropdown={dropdown} state="isEduOpen" updateOpen={updateOpen} />
+        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu} resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} isOpen={isEduOpen} updateOpen={updateOpen} />
       </div>
       <div className="displayContainer">
         <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />

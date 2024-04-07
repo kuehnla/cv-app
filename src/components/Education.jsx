@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export default function Education({ school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation, setIsPreview, eduLogo, dropdown }) {
+export default function Education({ isOpen, school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen }) {
   // [isOpen, setIsOpen] = useState(false);
   /*
    * If isOpen
@@ -8,6 +8,7 @@ export default function Education({ school, degree, eduStartDate, eduEndDate, se
    * 
    * return + Education
   */
+ if (!isOpen) return;
 
   const fields = [
     { label: "School", placeholder: "Enter university, college, or high school", key: uuid(), state: "school", value: school },
@@ -15,6 +16,11 @@ export default function Education({ school, degree, eduStartDate, eduEndDate, se
     { label: "Start Date", placeholder: "Enter start date", key: uuid(), state: "eduStartDate", value: eduStartDate },
     { label: "End Date", placeholder: "Enter end or expected date", key: uuid(), state: "eduEndDate", value: eduEndDate }
   ];
+
+  function handleClick(e) {
+    e.preventDefault();
+    updateOpen("isEduOpen");
+  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -37,7 +43,7 @@ export default function Education({ school, degree, eduStartDate, eduEndDate, se
 
   return (
     <div className="education">
-      <div className="eduInputHeader">
+      <div className="eduInputHeader" onClick={handleClick}>
         <img src={eduLogo} id="sectionLogo" />
         <h2>Education</h2>
         <img src={dropdown} id="sectionDropdown" />
