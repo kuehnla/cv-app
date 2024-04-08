@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import emailLogo from '../assets/mail-outline.svg'
 import phoneLogo from '../assets/call-outline.svg'
 import linkedInLogo from '../assets/logo-linkedin.svg'
