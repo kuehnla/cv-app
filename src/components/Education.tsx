@@ -1,9 +1,30 @@
 import { v4 as uuid } from 'uuid';
+import { Edu } from './Types';
 
-export default function Education(
-  { isOpen, school, degree, eduStartDate, eduEndDate, setEdu,
-  updateValue, resetEducation, setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit, edus
-  }) {
+type EducationProps = {
+  isOpen: boolean;
+  school: string;
+  degree: string;
+  eduStartDate: string;
+  eduEndDate: string;
+  setEdu: any;
+  updateValue: any;
+  resetEducation: any;
+  setIsPreview: any;
+  eduLogo: string;
+  dropdown: string;
+  updateOpen: any;
+  isEdit: boolean;
+  editIndex: number;
+  setIsEdit: any;
+  edus: Edu[];
+};
+
+export const Education = (props: EducationProps) => {
+  const { 
+    isOpen, school, degree, eduStartDate, eduEndDate, setEdu, updateValue, resetEducation,
+    setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit, edus
+   } = props;
 
   if (!isOpen) return;
 
@@ -14,18 +35,18 @@ export default function Education(
     { label: "End Date", placeholder: "Enter end or expected date", key: uuid(), state: "eduEndDate", value: eduEndDate }
   ];
 
-  function handleClick(e) {
+  function handleClick(e: any) {
     e.preventDefault();
     updateOpen("isEduOpen");
   }
 
-  function handleChange(e) {
+  function handleChange(e: any) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
     setIsPreview(!isEdit);
   }
 
-  function handleAddEdu(e) {
+  function handleAddEdu(e: any) {
     e.preventDefault();
     const education = {
       id: uuid(),
@@ -34,9 +55,8 @@ export default function Education(
       eduStartDate: eduStartDate,
       eduEndDate: eduEndDate,
     }
-    console.log(isEdit);
     if (!isEdit) {
-      setEdu((prevEducation) => [...prevEducation, education]);
+      setEdu((prevEducation: any) => [...prevEducation, education]);
     } else {
       const edusCopy = Array.from(edus);
       edusCopy[editIndex] = education;
@@ -74,4 +94,6 @@ export default function Education(
       </div>
     </div>
   )
-}
+};
+
+export default Education;

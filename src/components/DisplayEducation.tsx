@@ -1,5 +1,19 @@
 import '../styles/App.css'
-export default function DisplayEducation({ school, degree, eduStartDate, eduEndDate, edus, isPreview, isEdit }) {
+import { Edu } from './Types';
+
+type DisplayEducationProps = {
+  school: string;
+  degree: string;
+  eduStartDate: string;
+  eduEndDate: string;
+  edus: Edu[];
+  isPreview: boolean;
+  isEdit: boolean;
+};
+
+export const DisplayEducation = (props: DisplayEducationProps) => {
+  const { school, degree, eduStartDate, eduEndDate, edus, isPreview, isEdit } = props;
+
   return (
     <div className="cv-education">
       <h2 id="eduHeader">Education</h2>
@@ -28,4 +42,6 @@ export default function DisplayEducation({ school, degree, eduStartDate, eduEndD
       }
     </div>
   )
-}
+};
+
+export default DisplayEducation;

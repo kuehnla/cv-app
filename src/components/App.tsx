@@ -2,7 +2,7 @@ import { useState } from 'react';
 import DisplayPersonal from './DisplayPersonal'
 import DisplayExperience from './DisplayExperience'
 import DisplayEducation from './DisplayEducation'
-import CollapedSection from './CollapedSection'
+import CollapedSection from './CollapsedSection.tsx'
 import Clear from './Clear'
 import Education from './Education'
 import Experience from './Experience'
@@ -12,7 +12,9 @@ import eduLogo from '../assets/school.svg'
 import expLogo from '../assets/briefcase.svg'
 import personLogo from '../assets/person.svg'
 import dropdown from '../assets/chevron-down.svg'
+import { Job, Edu } from './Types.tsx'
 import '../styles/App.css'
+import React from 'react';
 
 
 export default function App() {
@@ -51,7 +53,7 @@ export default function App() {
   const [jobs, setJobs] = useState([]);
   const [edus, setEdu] = useState([]);
 
-  function updateOpen(state) {
+  function updateOpen(state: string) {
     switch (state) {
       case "isPersonalOpen": setIsPersonalOpen(isPersonalOpen === true ? false : true); break;
       case "isEduOpen": setIsEduOpen(isEduOpen === true ? false : true); break;
@@ -59,7 +61,7 @@ export default function App() {
     }
   }
 
-  function updateValue(value, state) {
+  function updateValue(value: string, state: string) {
     switch (state) {
       // personal
       case "fullName": setFullName(value); break;
@@ -108,13 +110,13 @@ export default function App() {
     setLinkedIn("");
   }
 
-  function handleEdit(e, index, type) {
+  function handleEdit(e: React.MouseEvent<HTMLInputElement>, index: number, type: string) {
     e.preventDefault();
     setEditIndex(index);
     if (type === "exp") {
       resetExperience();
       setIsExpEdit(true);
-      jobs.map((job, i) => {
+      jobs.map((job: Job, i) => {
         if (index === i) {
           setCompany(job.company);
           setPosition(job.position);
@@ -128,7 +130,7 @@ export default function App() {
     if (type === "edu") {
       resetEducation();
       setIsEduEdit(true);
-      edus.map((edu, i) => {
+      edus.map((edu: Edu, i) => {
         if (index === i) {
           setSchool(edu.school);
           setDegree(edu.degree);
@@ -139,7 +141,7 @@ export default function App() {
     }
   }
 
-  function handleRemove(e, index, type) {
+  function handleRemove(e: React.MouseEvent<HTMLInputElement>, index: number, type: string) {
     e.preventDefault();
     if (type === "exp") {
       setJobs(jobs => jobs.filter((_, i) => i !== index));
@@ -148,7 +150,7 @@ export default function App() {
     }
   }
 
-  function handleClear(e) {
+  function handleClear(e: React.MouseEvent<HTMLInputElement>) {
     e.preventDefault();
     setJobs([]);
     setEdu([]);
@@ -162,29 +164,117 @@ export default function App() {
   return (
     <div className="app">
       <div className="inputContainer">
-        <Clear handleClear={handleClear} />
-
-        <CollapedSection isOpen={isPersonalOpen} title={"Personal Information"} icon={personLogo} dropdown={dropdown} state="isPersonalOpen" updateOpen={updateOpen} />
-        <Personal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} updateValue={updateValue} personLogo={personLogo} dropdown={dropdown} isOpen={isPersonalOpen} updateOpen={updateOpen} />
-
-        <CollapedSection isOpen={isExpOpen} title={"Experience"} icon={expLogo} dropdown={dropdown} state="isExpOpen" updateOpen={updateOpen} />
-        <Experience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate} expLocation={expLocation}
-          expDesc={expDesc} updateValue={updateValue} setJobs={setJobs} jobs={jobs} resetExperience={resetExperience} setIsExpPreview={setIsExpPreview} expLogo={expLogo}
-          dropdown={dropdown} isOpen={isExpOpen} updateOpen={updateOpen} isEdit={isExpEdit} editIndex={editIndex} setIsEdit={setIsExpEdit} />
-
-        <CollapedSection isOpen={isEduOpen} title={"Education"} icon={eduLogo} dropdown={dropdown} state="isEduOpen" updateOpen={updateOpen} />
-        <Education school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} updateValue={updateValue} setEdu={setEdu}
-          edus={edus} resetEducation={resetEducation} setIsPreview={setIsEduPreview} eduLogo={eduLogo} dropdown={dropdown} isOpen={isEduOpen} updateOpen={updateOpen}
-          isEdit={isEduEdit} editIndex={editIndex} setIsEdit={setIsEduEdit} />
-
-        <EditList jobs={jobs} edus={edus} handleEdit={handleEdit} handleRemove={handleRemove} />
+        <Clear
+          handleClear={handleClear}
+        />
+        <CollapedSection
+          isOpen={isPersonalOpen} 
+          title={"Personal Information"} 
+          icon={personLogo} 
+          dropdown={dropdown} 
+          state="isPersonalOpen" 
+          updateOpen={updateOpen} 
+        />
+        <Personal 
+          fullName={fullName} 
+          email={email} 
+          phone={phone} 
+          linkedIn={linkedIn} 
+          updateValue={updateValue} 
+          personLogo={personLogo} 
+          dropdown={dropdown} 
+          isOpen={isPersonalOpen}
+          updateOpen={updateOpen} 
+        />
+        <CollapedSection
+          isOpen={isExpOpen} 
+          title={"Experience"} 
+          icon={expLogo} 
+          dropdown={dropdown} 
+          state="isExpOpen" 
+          updateOpen={updateOpen} 
+        />
+        <Experience 
+          company={company} 
+          position={position} 
+          expStartDate={expStartDate} 
+          expEndDate={expEndDate} 
+          expLocation={expLocation}
+          expDesc={expDesc} 
+          updateValue={updateValue} 
+          setJobs={setJobs} 
+          jobs={jobs} 
+          resetExperience={resetExperience} 
+          setIsExpPreview={setIsExpPreview} 
+          expLogo={expLogo}
+          dropdown={dropdown} 
+          isOpen={isExpOpen} 
+          updateOpen={updateOpen} 
+          isEdit={isExpEdit} 
+          editIndex={editIndex} 
+          setIsEdit={setIsExpEdit} 
+        />
+        <CollapedSection 
+          isOpen={isEduOpen} 
+          title={"Education"} 
+          icon={eduLogo} 
+          dropdown={dropdown} 
+          state="isEduOpen" 
+          updateOpen={updateOpen} 
+        />
+        <Education 
+          school={school} 
+          degree={degree} 
+          eduStartDate={eduStartDate} 
+          eduEndDate={eduEndDate} 
+          updateValue={updateValue} 
+          setEdu={setEdu}
+          edus={edus} 
+          resetEducation={resetEducation} 
+          setIsPreview={setIsEduPreview} 
+          eduLogo={eduLogo} 
+          dropdown={dropdown} 
+          isOpen={isEduOpen} 
+          updateOpen={updateOpen}
+          isEdit={isEduEdit} 
+          editIndex={editIndex}
+          setIsEdit={setIsEduEdit} 
+        />
+        <EditList 
+          jobs={jobs} 
+          edus={edus} 
+          handleEdit={handleEdit} 
+          handleRemove={handleRemove} 
+        />
       </div>
       <div className="displayContainer">
-        <DisplayPersonal fullName={fullName} email={email} phone={phone} linkedIn={linkedIn} />
-        <DisplayExperience company={company} position={position} expStartDate={expStartDate} expEndDate={expEndDate}
-          expLocation={expLocation} expDesc={expDesc} jobs={jobs} isPreview={isExpPreview} isEdit={isExpEdit} editIndex={editIndex} />
-        <DisplayEducation school={school} degree={degree} eduStartDate={eduStartDate} eduEndDate={eduEndDate} edus={edus} isPreview={isEduPreview} isEdit={isEduEdit} />
+        <DisplayPersonal 
+        fullName={fullName} 
+        email={email} 
+        phone={phone} 
+        linkedIn={linkedIn} 
+        />
+        <DisplayExperience 
+        company={company} 
+        position={position} 
+        expStartDate={expStartDate} 
+        expEndDate={expEndDate}
+        expLocation={expLocation} 
+        expDesc={expDesc} 
+        jobs={jobs} 
+        isPreview={isExpPreview} 
+        isEdit={isExpEdit} 
+        />
+        <DisplayEducation 
+        school={school} 
+        degree={degree} 
+        eduStartDate={eduStartDate} 
+        eduEndDate={eduEndDate} 
+        edus={edus} 
+        isPreview={isEduPreview} 
+        isEdit={isEduEdit} 
+        />
       </div>
     </div>
   );
-}
+};
