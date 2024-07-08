@@ -26,8 +26,6 @@ export const Education = (props: EducationProps) => {
     setIsPreview, eduLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit, edus
    } = props;
 
-  if (!isOpen) return;
-
   const fields = [
     { label: "School", placeholder: "Enter university, college, or high school", key: uuid(), state: "school", value: school },
     { label: "Degree", placeholder: "Enter degree / diploma", key: uuid(), state: "degree", value: degree },
@@ -73,7 +71,7 @@ export const Education = (props: EducationProps) => {
         <h2>Education</h2>
         <img src={dropdown} id="sectionDropdown" />
       </div>
-      <div>
+      {isOpen && <div className="infoSection">
         {fields.map((field) => {
           return (
             <div key={field.state} className="entry">
@@ -83,15 +81,15 @@ export const Education = (props: EducationProps) => {
             </div>
           )
         })}
-      </div>
-      <div className="buttons">
+      </div>}
+      {isOpen && <div className="buttons">
         <button id="cancel" onClick={resetEducation}>
           Cancel
         </button>
         <button id="addEdu" onClick={handleAddEdu}>
           Save
         </button>
-      </div>
+      </div>}
     </div>
   )
 };

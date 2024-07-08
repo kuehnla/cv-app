@@ -2,7 +2,6 @@ import { useState } from 'react';
 import DisplayPersonal from './DisplayPersonal'
 import DisplayExperience from './DisplayExperience'
 import DisplayEducation from './DisplayEducation'
-import CollapedSection from './CollapsedSection.tsx'
 import Clear from './Clear'
 import Education from './Education'
 import Experience from './Experience'
@@ -55,9 +54,9 @@ export default function App() {
 
   function updateOpen(state: string) {
     switch (state) {
-      case "isPersonalOpen": setIsPersonalOpen(isPersonalOpen === true ? false : true); break;
-      case "isEduOpen": setIsEduOpen(isEduOpen === true ? false : true); break;
-      case "isExpOpen": setIsExpOpen(isExpOpen === true ? false : true); break;
+      case "isPersonalOpen": setIsPersonalOpen(!isPersonalOpen); break;
+      case "isEduOpen": setIsEduOpen(!isEduOpen); break;
+      case "isExpOpen": setIsExpOpen(!isExpOpen); break;
     }
   }
 
@@ -167,14 +166,6 @@ export default function App() {
         <Clear
           handleClear={handleClear}
         />
-        <CollapedSection
-          isOpen={isPersonalOpen} 
-          title={"Personal Information"} 
-          icon={personLogo} 
-          dropdown={dropdown} 
-          state="isPersonalOpen" 
-          updateOpen={updateOpen} 
-        />
         <Personal 
           fullName={fullName} 
           email={email} 
@@ -184,14 +175,6 @@ export default function App() {
           personLogo={personLogo} 
           dropdown={dropdown} 
           isOpen={isPersonalOpen}
-          updateOpen={updateOpen} 
-        />
-        <CollapedSection
-          isOpen={isExpOpen} 
-          title={"Experience"} 
-          icon={expLogo} 
-          dropdown={dropdown} 
-          state="isExpOpen" 
           updateOpen={updateOpen} 
         />
         <Experience 
@@ -213,14 +196,6 @@ export default function App() {
           isEdit={isExpEdit} 
           editIndex={editIndex} 
           setIsEdit={setIsExpEdit} 
-        />
-        <CollapedSection 
-          isOpen={isEduOpen} 
-          title={"Education"} 
-          icon={eduLogo} 
-          dropdown={dropdown} 
-          state="isEduOpen" 
-          updateOpen={updateOpen} 
         />
         <Education 
           school={school} 

@@ -29,8 +29,6 @@ export const Experience = (props: ExperienceProps) => {
     resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit
   } = props;
 
-  if (!isOpen) return;
-
   const fields = [
     { label: "Company", placeholder: "Enter company name", key: uuid(), state: "company", value: company },
     { label: "Position", placeholder: "Enter position title", key: uuid(), state: "position", value: position },
@@ -80,7 +78,8 @@ export const Experience = (props: ExperienceProps) => {
         <h2>Experience</h2>
         <img src={dropdown} id="sectionDropdown" />
       </div>
-      <div>
+      
+      {isOpen && <div className="infoSection">
         {fields.map((field) => {
           return (
             <div key={field.state} className="entry">
@@ -90,15 +89,15 @@ export const Experience = (props: ExperienceProps) => {
             </div>
           )
         })}
-      </div>
-      <div className="buttons">
+      </div>}
+      {isOpen &&<div className="buttons">
         <button id="cancel" onClick={resetExperience}>
           Cancel
         </button>
         <button id="addExp" onClick={handleAddJob}>
           Save
         </button>
-      </div>
+      </div>}
     </div>
   )
 };

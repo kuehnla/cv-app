@@ -256,6 +256,11 @@ body {
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
+  margin: 0;
+}
+
+.infoSection {
+  padding-top: 16px;
 }
 
 .expInputHeader h2, .eduInputHeader h2,

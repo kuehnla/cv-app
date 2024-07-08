@@ -12,7 +12,7 @@ type PersonalProps = {
 
 export const Personal = (props: PersonalProps) => {
   const { fullName, email, phone, linkedIn, isOpen, updateValue, personLogo, dropdown, updateOpen } = props;
-  if (!isOpen) return;
+  // if (!isOpen) return;
 
   const fields = [
     { label: "Full Name", placeholder: "First and last name", state: "fullName", value: fullName },
@@ -29,6 +29,7 @@ export const Personal = (props: PersonalProps) => {
   function handleClick(e: any) {
     e.preventDefault();
     updateOpen("isPersonalOpen");
+    console.log(isOpen);
   }
 
   return (
@@ -38,7 +39,7 @@ export const Personal = (props: PersonalProps) => {
         <h2>Personal Information</h2>
         <img src={dropdown} id="sectionDropdown" />
       </div>
-      <div>
+      {isOpen && <div className="infoSection">
         {fields.map((field) => {
           return (
             <div key={field.state} className="entry" >
@@ -47,7 +48,7 @@ export const Personal = (props: PersonalProps) => {
             </div>
           )
         })}
-      </div>
+      </div>}
     </div>
   )
 };
