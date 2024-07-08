@@ -1,5 +1,17 @@
-export default function Personal({ fullName, email, phone, linkedIn, isOpen, updateValue, personLogo, dropdown, updateOpen }) {
+type PersonalProps = {
+  fullName: string;
+  email: string;
+  phone: string;
+  linkedIn: string;
+  isOpen: boolean;
+  updateValue: any;
+  personLogo: string;
+  dropdown: string;
+  updateOpen: any;
+};
 
+export const Personal = (props: PersonalProps) => {
+  const { fullName, email, phone, linkedIn, isOpen, updateValue, personLogo, dropdown, updateOpen } = props;
   if (!isOpen) return;
 
   const fields = [
@@ -9,12 +21,12 @@ export default function Personal({ fullName, email, phone, linkedIn, isOpen, upd
     { label: "LinkedIn", placeholder: "/in/kwexler", state: "linkedIn", value: linkedIn },
   ];
 
-  function handleChange(e) {
+  function handleChange(e: any) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
   }
 
-  function handleClick(e) {
+  function handleClick(e: any) {
     e.preventDefault();
     updateOpen("isPersonalOpen");
   }
@@ -38,11 +50,6 @@ export default function Personal({ fullName, email, phone, linkedIn, isOpen, upd
       </div>
     </div>
   )
+};
 
-  /*
-   * return 
-   * Personal Information
-   * form
-   *  
-  */
-}
+export default Personal;

@@ -1,6 +1,21 @@
 import '../styles/App.css'
+import { Job } from './Types';
 
-export default function DisplayExperience({ company, position, expStartDate, expEndDate, expLocation, expDesc, jobs, isPreview, isEdit }) {
+type DisplayExperienceProps = {
+  company: string;
+  position: string;
+  expStartDate: string;
+  expEndDate: string;
+  expLocation: string;
+  expDesc: string;
+  jobs: Job[];
+  isPreview: boolean;
+  isEdit: boolean;
+};
+
+export const DisplayExperience = (props: DisplayExperienceProps) => {
+  const { company, position, expStartDate, expEndDate, expLocation, expDesc, jobs, isPreview, isEdit } = props;
+
   return (
     <div className="cv-experience">
       <h2 id="expHeader">Experience</h2>
@@ -33,4 +48,6 @@ export default function DisplayExperience({ company, position, expStartDate, exp
       }
     </div>
   )
-}
+};
+
+export default DisplayExperience;

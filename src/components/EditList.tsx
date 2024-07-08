@@ -1,7 +1,16 @@
 import penLogo from '../assets/pencil.svg'
-import trashLogo from '../assets/trash.svg'
+import trashLogo from '../assets/trash-outline.svg'
+import { Job, Edu } from './Types';
 
-export default function EditList({ jobs, edus, handleEdit, handleRemove }) {
+type EditListProps = {
+  jobs: Job[];
+  edus: Edu[];
+  handleEdit: any;
+  handleRemove: any;
+}
+
+export const EditList = (props: EditListProps) => {
+  const { jobs, edus, handleEdit, handleRemove } = props;
 
   if (jobs.length === 0 && edus.length === 0) return;
 
@@ -31,4 +40,6 @@ export default function EditList({ jobs, edus, handleEdit, handleRemove }) {
       })}
     </div>
   )
-}
+};
+
+export default EditList;

@@ -1,10 +1,33 @@
 import { v4 as uuid } from 'uuid';
 import '../styles/App.css'
+import { Job } from './Types';
 
-export default function Experience(
-  { isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, 
-    setJobs, jobs, resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit
-  }) {
+type ExperienceProps = {
+  isOpen: boolean;
+  company: string;
+  position: string;
+  expStartDate: string;
+  expEndDate: string;
+  expLocation: string;
+  expDesc: string;
+  updateValue: any;
+  setJobs: any;
+  jobs: Job[];
+  resetExperience: any;
+  setIsExpPreview: any;
+  expLogo: string;
+  dropdown: string;
+  updateOpen: any;
+  isEdit: boolean;
+  editIndex: number;
+  setIsEdit: any;
+};
+
+export const Experience = (props: ExperienceProps) => {
+  const {
+    isOpen, company, position, expStartDate, expEndDate, expLocation, expDesc, updateValue, setJobs, jobs, 
+    resetExperience, setIsExpPreview, expLogo, dropdown, updateOpen, isEdit, editIndex, setIsEdit
+  } = props;
 
   if (!isOpen) return;
 
@@ -17,7 +40,7 @@ export default function Experience(
     { label: "Description", placeholder: "Enter role description", key: uuid(), state: "expDesc", value: expDesc }
   ];
 
-  function handleAddJob(e) {
+  function handleAddJob(e: any) {
     e.preventDefault();
     const experience = {
       id: uuid(),
@@ -29,7 +52,7 @@ export default function Experience(
       expDesc: expDesc,
     }
     if (!isEdit) {
-      setJobs((prevJobs) => [...prevJobs, experience]);
+      setJobs((prevJobs: any) => [...prevJobs, experience]);
     } else {
       const jobsCopy = Array.from(jobs);
       jobsCopy[editIndex] = experience;
@@ -39,12 +62,12 @@ export default function Experience(
     resetExperience();
   }
 
-  function handleClick(e) {
+  function handleClick(e: any) {
     e.preventDefault();
     updateOpen("isExpOpen");
   }
 
-  function handleChange(e) {
+  function handleChange(e: any) {
     e.preventDefault();
     updateValue(e.target.value, e.target.id);
     setIsExpPreview(!isEdit);
@@ -78,4 +101,6 @@ export default function Experience(
       </div>
     </div>
   )
-}
+};
+
+export default Experience;
